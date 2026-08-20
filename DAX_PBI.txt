@@ -1,0 +1,90 @@
+Total Respondents =
+COUNTROWS(pept_clean)
+
+#CREATE SATISFIED CUSTOMERS#
+Satisfied Customers =
+CALCULATE(
+    COUNTROWS(pept_clean),
+    pept_clean[pept_satisfaction] >= 4
+)
+
+
+#SATISFACTION RATE#
+Satisfaction Rate =
+DIVIDE(
+    [Satisfied Customers],
+    COUNT(pept_clean[pept_satisfaction]),
+    0
+)
+
+
+#QUALITY OF LIFE KPI#
+Quality of Life Improvement =
+CALCULATE(
+    COUNTROWS(pept_clean),
+    pept_clean[quality_of_life_improvement] = "YES"
+)
+
+Quality of Life Rate =
+DIVIDE(
+    [Quality of Life Improvement],
+    [Total Respondents],
+    0
+)
+
+
+#SAFETY KPI#
+
+Safety Improvement =
+CALCULATE(
+    COUNTROWS(pept_clean),
+    pept_clean[safety_improvement] = "YES"
+)
+Safety Improvement Rate =
+DIVIDE(
+    [Safety Improvement],
+    [Total Respondents],
+    0
+)
+
+#EDUCATION KPI#
+Education Improvement =
+CALCULATE(
+    COUNTROWS(pept_clean),
+    pept_clean[education_improvement] = "YES"
+)
+Education Improvement Rate =
+DIVIDE(
+    [Education Improvement],
+    [Total Respondents],
+    0
+)
+
+#HEALTH KPI#
+Health Improvement =
+CALCULATE(
+    COUNTROWS(pept_clean),
+    pept_clean[health_improvement] = "YES"
+)
+
+Health Improvement Rate =
+DIVIDE(
+    [Health Improvement],
+    [Total Respondents],
+    0
+)
+
+#PAYMENT DIFFICULTY#
+
+Customers With Payment Difficulties =
+CALCULATE(
+    COUNTROWS(pept_clean),
+    pept_clean[payment_difficulty] = "YES"
+)
+
+Payment Difficulty Rate =
+DIVIDE(
+    [Customers With Payment Difficulties],
+    COUNT(pept_clean[payment_difficulty]),
+    0
+)
